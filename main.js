@@ -1,29 +1,48 @@
-student_array=[]
-var display_array=[]
-function submit(){
-    for(j=1; j<=4; j++){
-        var name = document.getElementById("name_of_the_student_"+j).value
-        display_array.push(name)
-    }
-    console.log(display_array)
-    var length= display_array.length
-    for(i=0; i<length;i++){
-        student_array.push("<h4>name - "+ display_array[i]+"</h4>")
-    }
-    document.getElementById("display_name_with_commas").innerHTML=student_array
-    var remove_commas=student_array.join(" ")
-    document.getElementById("display_name_without_commas").innerHTML=remove_commas
-    document.getElementById("submit_button").style.display="none"
-    document.getElementById("sort_button").style.display="inline-block"
+var names_of_people = [];
+    
+function submit()
+{
+    var GuestName = document.getElementById("name1").value;
+	names_of_people.push(GuestName);
+	console.log(GuestName);    
+    console.log(names_of_people);
+    var lenght_of_name = names_of_people.length;
+    console.log(lenght_of_name);
+	document.getElementById("display_name").innerHTML=names_of_people.toString();
+   }
+
+
+
+function show()
+{
+	var i= names_of_people.join("<br>");
+	console.log(names_of_people);
+	document.getElementById("p1").innerHTML=i.toString();
+	document.getElementById("sort_button").style.display="block";
+	
 }
-function sorting(){
-    display_array.sort()
-    student_array=[]
-    var length= display_array.length
-    for(i=0; i<length;i++){
-        student_array.push("<h4>name - "+ display_array[i]+"</h4>")
-    }
-    document.getElementById("display_name_with_commas").innerHTML=student_array
-    var remove_commas=student_array.join(" ")
-    document.getElementById("display_name_without_commas").innerHTML=remove_commas
+
+
+function sorting()
+	{
+		names_of_people.sort();
+		var i= names_of_people.join("<br>");
+		console.log(names_of_people);		
+		document.getElementById("sorted").innerHTML=i.toString();
+		}
+
+
+function searching()
+{
+	var s= document.getElementById("s1").value;
+	var found=0;
+	var j;
+	for(j=0; j<names_of_people.length; j++)
+		{
+			if(s==names_of_people[j]){
+				found=found+1;
+			}	
+		}
+	document.getElementById("p2").innerHTML="name found "+found+" time/s";
+	console.log("found name "+found+" time/s");
 }
